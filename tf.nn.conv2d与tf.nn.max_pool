@@ -1,0 +1,12 @@
+tf.nn.conv2d提供了一个非常有效的实现卷积层前向传播的的函数，
+conv = tf.nn.conv2d(input,filter_weight ,strides=[, , , ,] ,padding=' ' ,)
+
+input 是当前节点的输入矩阵，是一个四维矩阵，后面三维对应一个节点矩阵，第一维对应一个输入batch，比如在输入层，input=[0, , , ,]表示第一张图片
+[1, , , ,]表示第二张
+filter_weight 提供了卷积层的权重
+strides表示步长 第一维和第四维必须是1，中间是在x,y方向上的步长
+padding有SAME 和 VALID 两种， SAME表示有0填充，VALID表示没有
+
+tf.nn.max_pool实现最大池化层的前向传播过程
+pool = tf.nn.max_pool(actived_conv, ksize=[1,3,3,1], strides=[1,2,2,1],padding='SAME')
+ksize是过滤器的尺寸
