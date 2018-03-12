@@ -1,0 +1,6 @@
+tf.train.exponential_decay(指数衰减法)
+在tensorflow中，利用指数衰减法来实现指数衰减 学习率
+步骤1 通过设置一个较大的学习率(快速得到一个比较优的解)
+步骤2 然后通过迭代逐步衰减学习率
+
+learning_rate = tf.train.exponential_decay(learning_rate_base,global_step,迭代轮数，learning_rate_decay)
