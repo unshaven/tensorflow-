@@ -1,0 +1,26 @@
+tensorflow中有两个关于variable的op，tf.Variable()与tf.get_variable()下面介绍这两个的区别
+
+区别1：
+      使用tf.Variable时，如果检测到命名冲突，系统会自己处理。使用tf.get_variable()时，系统不会处理冲突，而会报错
+			import tensorflow as tf
+			w_1 = tf.Variable(3,name="w_1")
+			w_2 = tf.Variable(1,name="w_1")
+			print w_1.name
+			print w_2.name
+			#输出
+			#w_1:0
+			#w_1_1:0
+实质区别：
+			import tensorflow as tf
+			with tf.variable_scope("scope1"):
+			w1 = tf.get_variable("w1", shape=[])
+			w2 = tf.Variable(0.0, name="w2")
+			with tf.variable_scope("scope1", reuse=True):
+			w1_p = tf.get_variable("w1", shape=[])
+			w2_p = tf.Variable(1.0, name="w2")
+
+			print(w1 is w1_p, w2 is w2_p)
+			#输出
+			#True  False
+			get_variable会去寻找是否有当前命名的变量，但是Variable会每次创建新的变量，由于tf.Variable() 每次都在创建新对象，
+			所有reuse=True 和它并没有什么关系
