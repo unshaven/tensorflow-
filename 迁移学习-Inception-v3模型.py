@@ -1,3 +1,10 @@
+'''
+迁移学习(Transfer learning) 顾名思义就是就是把已学训练好的模型参数迁移到新的模型来帮助新模型训练。
+考虑到大部分数据或任务是存在相关性的，所以通过迁移学习我们可以将已经学到的模型参数（也可理解为模型学到的知识）
+通过某种方式来分享给新模型从而加快并习（starting from scratch，tabula rasa）。
+优化模型的学习效率不用像大多数网络那样从零学
+'''
+
 import glob
 import os.path
 import random
